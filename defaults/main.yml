@@ -1,0 +1,4 @@
+---
+lm_sensors_force_detection: false
+
+lm_sensors_configs: {}
