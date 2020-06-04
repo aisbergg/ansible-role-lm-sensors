@@ -1,0 +1,12 @@
+---
+
+__lm_sensors_package_os:
+  default: lm_sensors
+  debian: lm-sensors
+  redhat: lm_sensors
+  archlinux: lm_sensors
+
+__lm_sensors_package: "{{
+    (__lm_sensors_package_os[ansible_os_family | lower]) |
+    default(__lm_sensors_package_os['default'])
+  }}"

@@ -1,0 +1,23 @@
+---
+- name: Install lm-sensors
+  tags: sensors
+  package:
+    name: "{{ __lm_sensors_package }}"
+    state: present
+  register: lm_sensors_install_status
+
+- name: Detect sensors
+  tags: sensors
+  command: sensors-detect --auto
+  changed_when: true
+  when: lm_sensors_install_status.changed or lm_sensors_force_detection | bool
+
+- name: Configure lm-sensors
+  tags: sensors
+  copy:
+    content: "{{ item.value }}"
+    dest: "/etc/sensors.d/{{ item.key }}"
+    owner: root
+    group: root
+    mode: 0644
+  loop: "{{ lm_sensors_configs | dict2items }}"
