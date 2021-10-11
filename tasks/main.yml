@@ -1,20 +1,20 @@
 ---
-- name: Install lm-sensors
+- name: install lm-sensors
   tags: [lm_sensors, sensors]
-  package:
+  ansible.builtin.package:
     name: "{{ __lm_sensors_package }}"
     state: present
   register: lm_sensors_install_status
 
-- name: Detect sensors
+- name: detect sensors
   tags: [lm_sensors, sensors]
-  command: sensors-detect --auto
+  ansible.builtin.command: sensors-detect --auto
   changed_when: true
-  when: lm_sensors_install_status.changed or lm_sensors_force_detection | bool
+  when: lm_sensors_install_status.changed or (lm_sensors_force_detection | bool)
 
-- name: Configure lm-sensors
+- name: configure lm-sensors
   tags: [lm_sensors, sensors]
-  copy:
+  ansible.builtin.copy:
     content: "{{ item.value }}"
     dest: "/etc/sensors.d/{{ item.key }}"
     owner: root
