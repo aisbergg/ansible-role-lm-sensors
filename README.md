@@ -1,4 +1,4 @@
-# Ansible Role: `aisbergg.lm-sensors`
+# Ansible Role: `aisbergg.lm_sensors`
 
 This Ansible role installs `lm-sensors` and detects available sensors on Debian, RedHat and ArchLinux systems.
 
@@ -33,7 +33,7 @@ None.
           label temp12 "Core 3"
 
   roles:
-    - aisbergg.lm-sensors
+    - aisbergg.lm_sensors
 ```
 
 ## License
