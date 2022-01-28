@@ -8,7 +8,7 @@
 
 - name: detect sensors
   tags: [lm_sensors, sensors]
-  ansible.builtin.command: sensors-detect --auto
+  ansible.builtin.command: sensors-detect --auto  # noqa no-handler
   changed_when: true
   when: lm_sensors_install_status.changed or (lm_sensors_force_detection | bool)
 
