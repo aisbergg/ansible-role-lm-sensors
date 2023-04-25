@@ -9,7 +9,7 @@ galaxy_info:
   company: none
   issue_tracker_url: https://github.com/aisbergg/ansible-role-lm-sensors/issues
   license: MIT
-  min_ansible_version: 2.10
+  min_ansible_version: "2.10"
 
   platforms:
     - name: EL
